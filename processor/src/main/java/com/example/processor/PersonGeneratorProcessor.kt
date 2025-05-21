@@ -58,10 +58,31 @@ class PersonGeneratorProcessor(
                     .addStatement("return \"Hello, my name is \$name and I am \$age years old.\"")
                     .build()
             )
+            .addFunction(
+                FunSpec.builder("hoge")
+                    .addParameter("msg", String::class)
+                    .addStatement("println(\"Hoge: \$msg\")")
+                    .build()
+            )
+            .build()
+
+        val animalClassSpec = TypeSpec.classBuilder("Animal")
+            .addModifiers(KModifier.DATA)
+            .primaryConstructor(
+                FunSpec.constructorBuilder()
+                    .addParameter("species", String::class)
+                    .build()
+            )
+            .addProperty(
+                PropertySpec.builder("species", String::class)
+                    .initializer("species")
+                    .build()
+            )
             .build()
 
         val fileSpec = FileSpec.builder(personPackageName, "${personClassName}Generated")
             .addType(personClassSpec)
+            .addType(animalClassSpec)
             .build()
 
         try {

@@ -18,7 +18,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        println(MyCustomPerson("John Doe", 30).greet())
+        MyCustomPerson("John Doe", 30).hoge("hoge")
+        MyApiLogger().test("yuta", "aaa")
+        MyApiLogger().test2("test2 user", "bbb")
         setContent {
             KspGenerationTryOutTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->

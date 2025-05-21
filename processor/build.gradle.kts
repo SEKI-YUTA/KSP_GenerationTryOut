@@ -13,4 +13,5 @@ kotlin {
 dependencies {
     implementation(libs.symbol.processing.api)
     implementation(libs.kotlinpoet.ksp)
+    implementation(project(":annotations"))
 }
